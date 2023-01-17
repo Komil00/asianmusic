@@ -5,3 +5,4 @@ celerybeat-schedule.db
 dump.rdb
 media/
 venv/
+glglu/
