@@ -97,6 +97,8 @@ class MusicListSerializers(serializers.ModelSerializer):
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation['likes'] = instance.like_for_music.count()
+        representation['count'] = Music.objects.count()
+
         return representation
 
 class MoreLikeMusicListSerializers(serializers.ModelSerializer):

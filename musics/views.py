@@ -11,7 +11,7 @@ from rest_framework import status
 from django.db import IntegrityError
 from django.db.models import Avg, Max, Min, Sum, Count
 # from .tasks import notification
-
+from rest_framework.pagination import PageNumberPagination
 from django.shortcuts import get_object_or_404
 
 from .serilaizers import SingerListSerializers, SingerRetriveSerializers,\

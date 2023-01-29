@@ -21,13 +21,15 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
-    'jazzmin',
+    'jazzmin', # admin restayling
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'drf_yasg',
 
     'musics',
     'customuser',
@@ -36,8 +38,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'django_filters',
-    'rest_framework_swagger',
     'corsheaders',
+    "debug_toolbar", # toolbar
 
     'django_celery_results',
     'django_celery_beat',
@@ -53,8 +55,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",  ## toolbar
 
     'django.middleware.common.CommonMiddleware',
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -75,7 +82,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
             'libraries': {
-                'staticfiles': 'django.templatetags.static',
+                'staticfiles': 'django.templatetags.static', # agar bumasa swagger ishlamaydi
             }
         },
     },
@@ -177,7 +184,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
-
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ],
 
 }
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -215,4 +224,8 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 
+LOGIN_REDIRECT_URL = '/api/login/'
+LOGIN_URL = '/api/login/'
+LOGOUT_URL = '/api/logout/'
+LOGOUT_REDIRECT_URL = '/api/logout/'
 
