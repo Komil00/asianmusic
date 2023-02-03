@@ -5,4 +5,3 @@ celerybeat-schedule.db
 dump.rdb
 media/
 venv/
-bot.py
