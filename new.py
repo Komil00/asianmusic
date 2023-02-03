@@ -209,16 +209,21 @@
 #         return result.next
 
 
-import asyncio
-from pyrogram import Client
+# import asyncio
+# from pyrogram import Client
 
-api_id = 29349324
-api_hash = "d41f283e52b3cc850206f14bd467affe"
-# bot_token = "2083963103:AAGCaOvpcRhUThuZRcRvooP3VjLMknLSDBU"
+# api_id = 29349324
+# api_hash = "d41f283e52b3cc850206f14bd467affe"
+# # bot_token = "2083963103:AAGCaOvpcRhUThuZRcRvooP3VjLMknLSDBU"
 
 
-app = Client("my_bot", api_id, api_hash)
-app.start()
-app.send_message("me", "123")
-app.stop()
+# app = Client("my_bot", api_id, api_hash)
+# app.start()
+# app.send_message("me", "123")
+# app.stop()
 
+# def generator(a, b):
+#     while True:
+#         yield a*b
+#         a = a+1
+# g = generator(2, 3)

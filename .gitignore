@@ -1,7 +1,8 @@
-.env
+asianmusic/.env
 *.sqlite3
 database3.sqlite3
 celerybeat-schedule.db
 dump.rdb
 media/
 venv/
+bot.py
