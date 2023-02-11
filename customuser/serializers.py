@@ -30,10 +30,10 @@ class CustomUserListSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ['id' ,'who', 'last_name', 'first_name', 'phone', 'email', 'avatar', 'is_verify']
     
-class CustomUserVerifySerializer(serializers.Serializer):
+class CustomUserVerifyCodeSerializer(serializers.Serializer):
     email = serializers.EmailField()
     code = serializers.CharField()
-   
+
  
 # class AccountSerializer(serializers.ModelSerializer):
 #     class Meta:

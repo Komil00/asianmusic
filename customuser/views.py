@@ -1,23 +1,22 @@
-from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, generics
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from rest_framework.decorators import api_view
-from rest_framework.filters import SearchFilter, OrderingFilter
-from rest_framework.parsers import JSONParser
+from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from rest_framework.reverse import reverse_lazy
-from rest_framework.views import APIView
 
-from .serializers import CustomUserSerializers, CustomUserVerifySerializer, CustomUserListSerializer
+
+from .serializers import CustomUserSerializers, CustomUserListSerializer, CustomUserVerifyCodeSerializer
 from .models import CustomUser
 
 from rest_framework import permissions
 
 from rest_framework import permissions
-
+from customuser.emails import send_code_to_email
+from asianmusic import settings
 
 class AuthorOrReadOnly(permissions.BasePermission):
 
@@ -57,14 +56,24 @@ class UsersViewList(generics.ListAPIView):
 #                 return None
 
 
-# class AccountView(generics.ListCreateAPIView):
-#     queryset = CustomUser.objects.all()
-#     serializer_class = AccountSerializer
+class CreateUserViewSet(viewsets.ModelViewSet):
+    serializer_class = CustomUserSerializers
+    queryset = CustomUser.objects.all()
+    http_method_names = ['post']
 
-class UsersVerifyApiView(APIView):
-    def post(self, request):
+    def perform_create(self, serializer):
+        serializer.save()
+        send_code_to_email(serializer.data['email'])
+
+
+
+class UsersVerifyApiView(viewsets.ModelViewSet):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserVerifyCodeSerializer
+    http_method_names = ['post']
+    def create(self, request):
         data = request.data
-        serializer = CustomUserVerifySerializer(data=data)
+        serializer = CustomUserVerifyCodeSerializer(data=data)
         if serializer.is_valid():
             email = serializer.data['email']
             code = serializer.data['code']
