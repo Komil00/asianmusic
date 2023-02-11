@@ -227,3 +227,8 @@
 #         yield a*b
 #         a = a+1
 # g = generator(2, 3)
+
+# import datetime
+# while True:
+#     x = datetime.datetime.now()
+#     print(x)

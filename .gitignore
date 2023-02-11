@@ -1,4 +1,7 @@
 asianmusic/.env
+asianmusic/__pycache__/
+customuser/__pycache__/
+musics/__pycache__/
 *.sqlite3
 database3.sqlite3
 celerybeat-schedule.db
