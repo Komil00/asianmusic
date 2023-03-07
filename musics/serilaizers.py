@@ -109,6 +109,7 @@ class MoreLikeMusicListSerializers(serializers.ModelSerializer):
         representation['likes'] = instance.like_for_music.count()
         return representation
 
+    
 class FollowSingerCreateSerilaizers(serializers.ModelSerializer):
     class Meta:
         model = FollowsSinger

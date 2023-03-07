@@ -195,9 +195,11 @@ class MoreLikeMusicViewSet(ModelViewSet):
     http_method_names = ['get']
 
     def list(self, request, *args, **kwargs):
-        queryset = Music.objects.select_related('like_for_music').all()
+        queryset = Music.objects.all()
         serializer = MoreLikeMusicListSerializers(queryset, many=True)
-        return Response(serializer.data)
+        serializer_data = sorted(
+            serializer.data, key=lambda k: k['likes'], reverse=True)
+        return Response(serializer_data)
 
 # from django.core.mail import send_mail
 # from django.conf import settings

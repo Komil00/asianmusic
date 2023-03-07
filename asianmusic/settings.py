@@ -229,3 +229,21 @@ LOGIN_URL = '/api/login/'
 LOGOUT_URL = '/api/logout/'
 LOGOUT_REDIRECT_URL = '/api/logout/'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

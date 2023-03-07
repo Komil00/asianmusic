@@ -232,3 +232,170 @@
 # while True:
 #     x = datetime.datetime.now()
 #     print(x)
+
+# l = ['sat', 'bat', 'cat', 'mat']
+  
+# # map() can listify the list of strings individually
+# # test = list(map(list, l))
+# # print(test)
+# def addition(n):
+#     return n + n
+  
+# # We double all numbers using map()
+# numbers = (1, 2, 3, 4)
+# result = map(addition, numbers)
+# print(list(result))
+
+# a = [1,2,3,4,5]
+
+# for i in a[2:4:1]:
+#     print(i)
+
+# class Computer():
+#     def __init__(self, computer, ram, storage):
+#         self.computer = computer
+#         self.ram = ram
+#         self.storage = storage
+
+
+# # Class Mobile inherits Computer
+# class Mobile(Computer):
+#     def __init__(self, computer, ram, storage, model):
+#         super().__init__(computer, ram, storage)
+#         self.model = model
+# Apple = Mobile('Apple', 2, 64, 'iPhone X')
+# print('The mobile is:', Apple.computer)
+# print('The RAM is:', Apple.ram)
+# print('The storage is:', Apple.storage)
+# print('The model is:', Apple.model)
+
+# thislist = ["apple", "banana", "cherry"]
+# thislist.insert(2, "watermelon")
+# print(thislist)
+# thislist = ["apple", "banana", "cherry"]
+# tropical = ["mango", "pineapple", "papaya"]
+# thislist.extend(tropical)
+# print(thislist)
+# thislist = ["apple", "banana", "cherry"]
+# thislist.pop()
+# print(thislist)
+
+# thislist = ["apple", "banana", "cherry"]
+
+# del thislist
+# print(thislist)
+
+# thislist = ["apple", "banana", "cherry"]
+# for i in range(len(thislist)):
+#   print(thislist[i])
+
+# fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+# newlist = []
+
+# for x in fruits:
+#   if "a" in x:
+#     newlist.append(x)
+
+# print(newlist)
+
+# def myfunc(n):
+#   return abs(n - 50)
+
+# thislist = [100, 50, 65, 82, 23]
+# thislist.sort(key = myfunc)
+# print(thislist)
+# thislist = ["banana", "Orange", "Kiwi", "cherry"]
+# thislist.reverse()
+# print(thislist)
+
+# thistuple = ("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
+# thiss = list(thistuple)
+# thiss.append('komil')
+# thistuple = tuple(thiss)
+# print(thistuple)
+
+# def sayhello():
+#     print('hello')
+# sayhello()
+# from datetime import date
+
+# # random Person
+# class Person:
+#     def __init__(self, name, age):
+#         self.komil = name
+#         self.age = age
+
+#     @classmethod
+#     def fromBirthYear(cls, name, birthYear):
+#         return cls(name, date.today().year - birthYear)
+
+#     def display(self):
+#         print(self.komil + "'s age is: " + str(self.age))
+
+# person = Person('Adam', 19)
+# person.display()
+
+# person1 = Person.fromBirthYear('John',  1985)
+# person1.display()
+
+# from datetime import date
+
+# # random Person
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+
+#     @staticmethod
+#     def fromFathersAge(name, fatherAge, fatherPersonAgeDiff):
+#         return Person(name, date.today().year - fatherAge + fatherPersonAgeDiff)
+
+#     @classmethod
+#     def fromBirthYear(cls, name, birthYear):
+#         return cls(name, date.today().year - birthYear)
+
+#     def display(self):
+#         print(self.name + "'s age is: " + str(self.age))
+
+# class Man(Person):
+#     sex = 'Male'
+
+# man = Man.fromBirthYear('John', 1985)
+# print(isinstance(man, Man))
+
+# man1 = Man.fromFathersAge('John', 1965, 20)
+# print(isinstance(man1, Man))
+
+# class Person:
+#   def __init__(self, name, age):
+#     self.name = name
+#     self.age = age
+
+#   def __str__(self):
+#     return f"{self.name}({self.age})"
+
+# p1 = Person("John", 36)
+
+# print(p1)
+
+# class MyClass:
+#     b = 12
+#     @classmethod
+#     def my_static_method(cls, x, y):
+#         return x + y + cls.b
+
+# result = MyClass.my_static_method(5, 10)
+# print(result)  # Output: 15
+
+class Komil:
+    def __init__(self, FI, age):
+        self.verify_fio(FI)
+        self.FI = FI
+        self.age = age
+    @classmethod
+    def verify_fio(cls, FI):
+        if FI != "Komil Tuev":
+            raise TypeError('nono')
+
+f = Komil("adf", 12)
+print(f.__dict__)
